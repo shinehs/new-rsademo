@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,address=no" />
+    <meta property="og:url" content="https://www.tiyalive.com" />
+    <meta property="og:type" content="voice" />
+    <meta property="og:title" content="TIYA" />
+    <!-- <meta property="og:description" content="Meet interesting people with voice" /> -->
+    <meta property="og:description" content="Play Among Us on TIYA with one click" />
+    <meta property="og:image" content="http://fepublicty.tiyalive.com/voice-detection/poster_2.png" />
+    <link rel="shortcut icon" href="https://fepublicty.tiyalive.com/tiya/favicon_new.ico" />
+    <title>TIYA</title>
+    <!-- GrowingIO Analytics code version 2.1 -->
+    <!-- Copyright 2015-2018 GrowingIO, Inc. More info available at http://www.growingio.com -->
+    <!-- <script type="text/javascript">
+      !(function (e, t, n, g, i) {
+        ;(e[i] =
+          e[i] ||
+          function () {
+            ;(e[i].q = e[i].q || []).push(arguments)
+          }),
+          (n = t.createElement('script')),
+          (tag = t.getElementsByTagName('script')[0]),
+          (n.async = 1),
+          (n.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + g),
+          tag.parentNode.insertBefore(n, tag)
+      })(window, document, 'script', 'assets.giocdn.com/2.1/gio.js', 'gio')
+      gio('init', '8f5262af39390fa6', {})
+      //custom page code begin here
+      //custom page code end here
+      gio('send')
+    </script> -->
+    <!-- End GrowingIO Analytics code version: 2.1 -->
+    <style>
+      @keyframes spinner {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!-- 默认loading 项目文件加载时展示 -->
+    <div
+      id="loading"
+      style="
+        width: 74px;
+        height: 74px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      "
+    >
+      <img
+        style="animation: spinner 2s linear infinite"
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAABKCAYAAAAc0MJxAAAFaElEQVR4Xu2aWcgcRRSFz3HHfd/3FUXFBR8EcYuKb4IiCO4iomIUVBA17oqCeZAIvmoMKCpxeYwbGkRcIiYiKBpjosSIiVnQuASTI+fntozj/DN30j3tEOrCwP/P3Kq+9fWpqq57myiWIsCUV3FCAZUUQQFVQCUJJN2KogqoJIGkW1FUAZUkkHQriiqgkgSSbkVRBVSSQNKtKKqAShJIuhVFFVBJAkm3sVKUJMeze8S+gqSS4xi527iB2gzAbjHqn0luGDmB5AVaAyVpXwDXA3iZ5Pxe8UlKgZK0DYAdAKwi+VdyrLXc2gT1NICrAMwheX5NUAcC2B7AapI/1CKQbNwmqHMAvBFxXUryue4YM4qStBOA/aLtEpJrk2Ot5dYaKEcpaSaAKwB8TfLIjQR1OICtAKwhubTW6Ido3DaoQwF8E/HdS/KhzlgHKUrSHgD8sS0kuW6IsdZybRVUqOo+APcDWA/gMJJLqhH0AyVpSwBHhO9ykstrjXzIxq2DClhWldX1DMmrk6C8a+4MYB3JhUOOs7Z7o6Ak7QXgLgCzSc6dLDpJlwN4Nn6fQvLtALg5gF3j+5UkrTqvbdsBOCi+X0pyTZ++dwGwJ4Bvm5yaTYO6A8CtMYgXAUzvnFpd69HrAM4FMJfkGR2q2tp/k/yz47uDAWwLYG2f/vxsZT/fLJt3xMW1pRQdNA3qWADTAJzVEeDjJKd3ByzJcKyku0k+1m9AknyssUoWk/ytR19WmyFVtjIU9etYgupQwEUAbo91aOLuAjCwl5oKPKak1WNAVpPt94D5U5PXmVB40x12TS9PQwPz2mN7F8ATJN+vc11JXtT9dO71aIJZTLV/dtA6/fdqO1JQcdcPCFiXRAAbSO5TZyAxbasufgxIf9Tpc1DbkYPqmI6nBbC3SD45KLB+v0uymrw7es1aXaevbNvWQGUDGle/Aip5ZxoBFSf6aueZ7NJbkfw+GVfKTZJTLRMPpX1sfRMPnk2BciJui8TobiM5J+E30EXS/gBOHegIePOYnfDr61JAJQk2BcrJtDL1ktA3abdGFLVJE4rBtQZK0olRXPiwV758GNiSToojzMdtpYNHDkrS3gCuBFBVXrwLTRkGTLevpBs6zqlfAjCwX+r0OajtSEFFgs4lKtfrbJ8AmEVywaDA+v0eNcKTAfgcafOh2LDm1em3X9uRgJLk0pRV5Gcdm2tvM0k6WdeYSToKwCkAdoxOnfk0sK8au8go1ihJLiVdF8FXsTov7jLVv0zSMQBcaHie5KsDFOQD9dkB+z+pFEmG5U9l3wH4gOSKpoA1qihJ1wBwPtxm9RjSsl7BSnIm9HgAX5A0sAmLRd+p4E87vvP0dRZzEclZk/RnVRmWVWabR/KjcQXlFyyuBfAmSa9HPU3S6QBuih8fJPl5QHLNroL2QFWSknRIFE7t9grJz/r07enu4qp318aqyI0qKnv3JDkf5TTuOySf6lCOM5cPx//TOnNNki4AcEK8mDEje62m/FoHJeliAP74lZ6pnYXMSPFOBsoQb47HAgN2Wrk1axVU1P2q7OYL3af6fqBianrKVhWeGSRXtUWqbVBelzzYZSRv6R7kIFABa2qkgRcM2i2bhNgaKEnHAbgngrca3ttIUO7nwmjrh9dFTQKZrK82Qd0I4EwAVsIjvQLKKCpUdZlf8AAwn+Rrmxoo1+DOi227Z6l7CFA+Px4dz0ojPeNVN6E1RWXuehZUpq+mfcYNlF/EeDQGeWev9wyaBpDtb6xAZYP+P/wKqCT1AqqAShJIuhVFFVBJAkm3oqgCKkkg6VYUVUAlCSTdiqIKqCSBpFtRVAGVJJB0K4oqoJIEkm5FUUlQfwMV7/ha3BSvigAAAABJRU5ErkJggg=="
+        alt=""
+      />
+    </div>
+    <script>
+      var onAppCallBack = function () {}
+    </script>
+    <script>
+      if (location.href.includes('tiya_theme_dark=true')) {
+        document.body.classList.add('tiya_theme_dark')
+        document.body.style.backgroundColor = '#131414'
+      }
+    </script>
+    <!-- <script src="https://cdn.bootcss.com/PreloadJS/1.0.1/preloadjs.js"></script> -->
+    <!-- 解决ios 按下active没效果的问题 -->
+    <script type="text/javascript">
+      document.body.addEventListener('touchstart', function () {}, false)
+    </script>
+  </body>
+</html>
